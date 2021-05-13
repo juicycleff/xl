@@ -1,8 +1,8 @@
 # XL
 
-| [![XL Package Logotype](https://raw.githubusercontent.com/Zabadam/xl/master/example/android/app/src/main/res/drawable/xl.png 'Get started by adding `xl:` to your pubspec and importing `package:xl/xl.dart`')](https://pub.dev/packages/xl) | [![XL Logotype "Spinning Top"](https://raw.githubusercontent.com/Zabadam/xl/master/doc/xl.gif 'See `ExampleXL()` demo')](https://github.com/Zabadam/xl/blob/main/example/lib/main.dart#L276) |
+| [![XL Package Logotype](https://raw.githubusercontent.com/Zabadam/xl/master/example/android/app/src/main/res/drawable/xl.png 'Get started by adding `xl:` to your pubspec and importing `package:xl/xl.dart`')](https://pub.dev/packages/xl) | [![XL Logotype "Spinning Top"](https://raw.githubusercontent.com/Zabadam/xl/master/doc/xl.gif 'See `ExampleXL()` demo')](https://github.com/Zabadam/xl/blob/master/example/lib/main.dart#L286) |
 | :-: | :-: |
-| [![Starfield](https://raw.githubusercontent.com/Zabadam/xl/master/doc/starfield.gif 'See `ExampleStarfield()` demo')](https://github.com/Zabadam/xl/blob/main/example/lib/main.dart#L184) | [![Warpspeed](https://raw.githubusercontent.com/Zabadam/xl/master/doc/warpspeed.gif 'See `ExampleStarfield()` demo')](https://github.com/Zabadam/xl/blob/main/example/lib/main.dart#L184) |
+| [![Starfield](https://raw.githubusercontent.com/Zabadam/xl/master/doc/starfield.gif 'See `ExampleStarfield()` demo')](https://github.com/Zabadam/xl/blob/master/example/lib/main.dart#L181) | [![Warpspeed](https://raw.githubusercontent.com/Zabadam/xl/master/doc/warpspeed.gif 'See `ExampleStarfield()` demo')](https://github.com/Zabadam/xl/blob/master/example/lib/main.dart#L181) |
 
 
 A package providing the `XL` stack widget to implement accelerometer- and  
@@ -76,7 +76,7 @@ class Example extends StatelessWidget {
  ```
 
 That example yields the following result:  
-[![Delicious parallax by accelerometer 🤤](https://raw.githubusercontent.com/Zabadam/xl/master/doc/example_100.gif 'Delicious parallax by accelerometer 🤤')](https://github.com/Zabadam/xl/blob/main/example/lib/main.dart#L34)
+[![Delicious parallax by accelerometer 🤤](https://raw.githubusercontent.com/Zabadam/xl/master/doc/example_100.gif 'Delicious parallax by accelerometer 🤤')](https://github.com/Zabadam/xl/blob/master/example/lib/main.dart#L35)
 
 ## Advanced Usage
 As stated, an `XL` may have both varieties of layer interspersed.  
@@ -132,7 +132,7 @@ final example = Column(children: [
 
 That same stack of `layers` laid out with these two flags  
 in the four possible configurations would behave like this:  
-[![Flags to handle \`XLayers\` and \`PLayers\` separately](https://raw.githubusercontent.com/Zabadam/xl/master/doc/sharing_inputs_300.gif 'Flags to handle `X` and `P Layers` separately')](https://github.com/Zabadam/xl/blob/main/example/lib/main.dart#L76)
+[![Flags to handle \`XLayers\` and \`PLayers\` separately](https://raw.githubusercontent.com/Zabadam/xl/master/doc/sharing_inputs_300.gif 'Flags to handle `X` and `P Layers` separately')](https://github.com/Zabadam/xl/blob/master/example/lib/main.dart#L77)
 > 🟥 Red layers are `PLayer`s and react primarily to pointers data.  
 > 🟦 Blue layers are `XLayer`s and react primarily to sensors data.  
 > ⬛ Black layers are `XLayer`s with *no animation properties*.
@@ -183,7 +183,8 @@ final xl = ParallaxStack( // XL
   ],
 );
 ```
-- Furthermore, the [original website demo](https://github.com/Zabadam/xl/blob/main/website/ 'the_wave website demo from package:mouse_parallax, converted to package:xl') works well with accelerometer data.
+- Furthermore, the [original website demo](https://xl.zaba.app/ 'the_wave website demo from package:mouse_parallax, converted to package:xl')
+works well [with accelerometer data]((https://github.com/Zabadam/xl/blob/master/website/ 'the_wave website demo from package:mouse_parallax, converted to package:xl')).
 
 ##### **Forked from [`mouse_parallax`](https://pub.dev/packages/mouse_parallax 'pub.dev package: mouse_parallax') considering the required `AnimatedParallaxStack` widget is not exported with the original package and that accelerometers have nothing to do with mice.**
 - ##### [License here.](https://pub.dev/packages/mouse_parallax/license 'pub.dev package: mouse_parallax | license')

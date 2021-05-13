@@ -7,11 +7,7 @@ class Shade extends StatelessWidget {
   final Color color;
 
   @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: color,
-    );
-  }
+  Widget build(BuildContext context) => Container(color: color);
 }
 
 class BackgroundLayer extends StatelessWidget {
