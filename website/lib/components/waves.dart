@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:mouse_parallax/mouse_parallax.dart';
+import 'package:xl/xl.dart';
 
 class Wave1 extends StatelessWidget {
+  const Wave1({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     const offset = 90.0;
     const maxWidth = 400.0 + offset;
     const maxHeight = 400.0 + offset;
-    return ParallaxLayer(
+
+    return AcceleraxLayer(
       offset: Offset(offset, offset + 70),
       xOffset: -offset,
       yOffset: -offset,
@@ -21,9 +23,7 @@ class Wave1 extends StatelessWidget {
             decoration: BoxDecoration(
               image: DecorationImage(
                 fit: BoxFit.cover,
-                image: AssetImage(
-                  'images/Wave 1.png',
-                ),
+                image: AssetImage('res/waves/1.png'),
               ),
             ),
           ),
@@ -34,12 +34,15 @@ class Wave1 extends StatelessWidget {
 }
 
 class Wave2 extends StatelessWidget {
+  const Wave2({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     const offset = 50.0;
     const maxHeight = 300.0 + offset * 2;
     final maxWidth = MediaQuery.of(context).size.width + 200;
-    return ParallaxLayer(
+
+    return AcceleraxLayer(
       xOffset: -offset,
       yOffset: -offset,
       offset: Offset(0, offset),
@@ -56,9 +59,7 @@ class Wave2 extends StatelessWidget {
               decoration: BoxDecoration(
                 image: DecorationImage(
                   fit: BoxFit.cover,
-                  image: AssetImage(
-                    'images/Wave 2.png',
-                  ),
+                  image: AssetImage('res/waves/2.png'),
                 ),
               ),
             ),
@@ -70,12 +71,15 @@ class Wave2 extends StatelessWidget {
 }
 
 class Wave3 extends StatelessWidget {
+  const Wave3({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     const offset = 30.0;
     const maxHeight = 600.0 + offset * 2;
     final maxWidth = MediaQuery.of(context).size.width + 200;
-    return ParallaxLayer(
+
+    return AcceleraxLayer(
       xOffset: -offset,
       yOffset: -offset,
       offset: Offset(0, -10),
@@ -92,9 +96,7 @@ class Wave3 extends StatelessWidget {
               decoration: BoxDecoration(
                 image: DecorationImage(
                   fit: BoxFit.cover,
-                  image: AssetImage(
-                    'images/Wave 3.png',
-                  ),
+                  image: AssetImage('res/waves/3.png'),
                 ),
               ),
             ),
@@ -113,6 +115,7 @@ class AnimatedLayer extends StatefulWidget {
     this.dx = -20,
     this.dy = 20,
   }) : super(key: key);
+
   final double dx;
   final double dy;
   final Duration duration;
@@ -163,15 +166,13 @@ class _AnimatedLayerState extends State<AnimatedLayer>
   Widget build(BuildContext context) {
     return AnimatedBuilder(
       animation: _animation!,
-      builder: (context, __) {
-        return Transform.translate(
-          offset: Offset(
-            widget.dx * _animation!.value,
-            widget.dy * _animation!.value,
-          ),
-          child: widget.child,
-        );
-      },
+      builder: (context, __) => Transform.translate(
+        offset: Offset(
+          widget.dx * _animation!.value,
+          widget.dy * _animation!.value,
+        ),
+        child: widget.child,
+      ),
     );
   }
 }

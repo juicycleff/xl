@@ -5,18 +5,16 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "example",
+            "name": "XL",
             "request": "launch",
             "program": "example/lib/main.dart",
             "type": "dart",
-            "deviceId": "macOS"
         },
         {
             "name": "website",
             "request": "launch",
             "program": "website/lib/main.dart",
             "type": "dart",
-            "deviceId": "chrome",
         }
     ]
 }

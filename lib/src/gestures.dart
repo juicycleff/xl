@@ -1,7 +1,10 @@
+/// Defines [PointerListener] and its associated [HoverConstraintCallback].
+library xl;
+
 import 'package:flutter/material.dart';
 
-/// A callback used to provide the ParallaxStack with the details of the
-/// pointer event.
+/// A callback used to provide the parent with
+/// details of the current local pointer event.
 typedef HoverConstraintCallback = void Function(
   PointerEvent hoverEvent,
   BoxConstraints constraints,
@@ -18,22 +21,18 @@ class PointerListener extends StatelessWidget {
     required this.onEnter,
     required this.onExit,
     required this.onHover,
-    this.touchBased = false,
   }) : super(key: key);
 
-  /// Triggered when a mouse pointer has entered this widget.
+  /// Triggered when a pointer has entered this widget.
   final HoverConstraintCallback onEnter;
 
-  /// Triggered when a mouse pointer has exited this widget.
+  /// Triggered when a pointer has exited this widget.
   final HoverConstraintCallback onExit;
 
-  /// Triggered when a mouse pointer hovers over this widget.
+  /// Triggered when a pointer hovers over this widget.
   final HoverConstraintCallback onHover;
 
-  /// Whether the ParallaxStack should use touch or not.
-  final bool touchBased;
-
-  /// The child of the stack
+  /// The child of this listener, intended to be an `AnimatedParallaxStack`.
   final Widget child;
 
   @override
@@ -42,6 +41,7 @@ class PointerListener extends StatelessWidget {
 
     return LayoutBuilder(builder: (context, constraints) {
       listener = MouseRegion(
+        opaque: false, // expose flag?
         onHover: (e) => onHover(e, constraints),
         onEnter: (e) => onEnter(e, constraints),
         onExit: (e) => onExit(e, constraints),

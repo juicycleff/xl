@@ -1,44 +1,68 @@
+/// Defines [AnimatedXL], penultimate widget prior to end products.
+library xl;
+
 import 'package:flutter/material.dart';
 
+import 'models/layer.dart';
 import 'rendering.dart';
 
-/// {@template animated_parallax_stack}
-/// An [ImplicitlyAnimatedWidget] used to animate the values of the
-/// ParallaxStack implicitly.
+/// {@template animated_xl}
+/// An [ImplicitlyAnimatedWidget] to animate the values of an `XL`.
 /// {@endtemplate}
-class AnimatedParallaxStack extends ImplicitlyAnimatedWidget {
-  /// {@macro animated_parallax_stack}
-
-  AnimatedParallaxStack({
+class AnimatedXL extends ImplicitlyAnimatedWidget {
+  /// {@macro animated_xl}
+  AnimatedXL({
     Key? key,
-    Curve curve = Curves.linear,
-    required Duration duration,
+    this.xFactor = 0,
+    this.yFactor = 0,
+    this.sensorFactorX = 0,
+    this.sensorFactorY = 0,
+    this.sensorFactorZ = 0,
     required this.children,
-    required this.xFactor,
-    required this.yFactor,
+    required Duration duration,
+    Curve curve = Curves.linear,
   }) : super(key: key, duration: duration, curve: curve);
 
-  /// A list of [ParallaxLayer]s.
+  /// A list of `Layer`s.
+  ///
+  /// ### X Layers
+  /// {@macro xlayer}
+  ///
+  /// ### P Layers
+  /// {@macro player}
   final List<Widget> children;
 
-  /// The distance the mouse has moved across the x axis of the screen
-  /// represented by a range of values from -1 to 1
+  /// {@template pointer_factor}
+  /// The distance the mouse has moved across this axis
+  /// represented by a range of values from `-1` to `1`.
+  /// {@endtemplate}
   final double xFactor;
 
-  /// The distance the mouse has moved across the y axis of the screen
-  /// represented by a range of values from -1 to 1
+  /// {@macro pointer_factor}
   final double yFactor;
 
+  /// {@template sensor_factor}
+  /// Only pertinent for `Accelerax` widgets.
+  ///
+  /// The amount the device has rotated in this axis
+  /// represented by a range of values from `-1` to `1`.
+  /// {@endtemplate}
+  final double sensorFactorX;
+
+  /// {@macro sensor_factor}
+  final double sensorFactorY;
+
+  /// {@macro sensor_factor}
+  final double sensorFactorZ;
+
   @override
-  ImplicitlyAnimatedWidgetState<ImplicitlyAnimatedWidget> createState() {
-    return _AnimatedParallaxStackState();
-  }
+  ImplicitlyAnimatedWidgetState<ImplicitlyAnimatedWidget> createState() =>
+      _AnimatedXLState();
 }
 
-class _AnimatedParallaxStackState
-    extends AnimatedWidgetBaseState<AnimatedParallaxStack> {
-  Tween<double>? _xFactor;
-  Tween<double>? _yFactor;
+class _AnimatedXLState extends AnimatedWidgetBaseState<AnimatedXL> {
+  Tween<double>? _xFactor, _yFactor;
+  Tween<double>? _sensorFactorX, _sensorFactorY, _sensorFactorZ;
 
   @override
   void forEachTween(TweenVisitor<dynamic> visitor) {
@@ -46,14 +70,21 @@ class _AnimatedParallaxStackState
         (dynamic e) => Tween<double>(begin: e as double)) as Tween<double>;
     _yFactor = visitor(_yFactor, widget.yFactor,
         (dynamic e) => Tween<double>(begin: e as double)) as Tween<double>;
+    _sensorFactorX = visitor(_sensorFactorX, widget.sensorFactorX,
+        (dynamic e) => Tween<double>(begin: e as double)) as Tween<double>;
+    _sensorFactorY = visitor(_sensorFactorY, widget.sensorFactorY,
+        (dynamic e) => Tween<double>(begin: e as double)) as Tween<double>;
+    _sensorFactorZ = visitor(_sensorFactorZ, widget.sensorFactorZ,
+        (dynamic e) => Tween<double>(begin: e as double)) as Tween<double>;
   }
 
   @override
-  Widget build(BuildContext context) {
-    return StaticParallaxStack(
-      children: widget.children,
-      xFactor: _xFactor?.evaluate(animation) ?? 0.0,
-      yFactor: _yFactor?.evaluate(animation) ?? 0.0,
-    );
-  }
+  Widget build(BuildContext context) => StaticXL(
+        children: widget.children,
+        xFactor: _xFactor?.evaluate(animation) ?? 0.0,
+        yFactor: _yFactor?.evaluate(animation) ?? 0.0,
+        sensorFactorX: _sensorFactorX?.evaluate(animation) ?? 0.0,
+        sensorFactorY: _sensorFactorY?.evaluate(animation) ?? 0.0,
+        sensorFactorZ: _sensorFactorZ?.evaluate(animation) ?? 0.0,
+      );
 }

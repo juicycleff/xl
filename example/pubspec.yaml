@@ -1,26 +1,23 @@
-name: example
-description: A new Flutter project.
-publish_to: 'none' 
-
-version: 1.0.0+1
+name: xl_demo
+description: A demonstration of several XL parallax widgets.
+publish_to: 'none'
+version: 1.0.0
 
 environment:
-  sdk: ">=2.7.0 <3.0.0"
+  sdk: ">=2.12.0 <3.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
 
-  cupertino_icons: ^1.0.1
-  mouse_parallax:
-    path: ../
-
 dev_dependencies:
   very_good_analysis: ^1.0.4
   flutter_test:
     sdk: flutter
+  xl:
+    path: ../
 
 flutter:
   uses-material-design: true
-
-  
+  assets:
+    - res/

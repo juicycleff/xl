@@ -1,5 +1,8 @@
 name: the_wave
-description: A new Flutter project.
+description: >
+  A demonstration of the reimplementation of `ParallaxStack` with
+  interoperability of new paradigm (though XL is not interchangeable with
+  original mouse_parallax package).
 publish_to: 'none'
 version: 1.0.0+1
 
@@ -10,18 +13,21 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.2
-  mouse_parallax: ^1.0.0
+  # mouse_parallax: ^1.0.0
   url_launcher: ^6.0.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  xl:
+    path: ../
 
 flutter:
   uses-material-design: true
   assets:
-    - images/
-    
+    - res/
+    - res/waves/
+
   fonts:
     - family: Quicksand
       fonts:

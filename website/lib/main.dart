@@ -2,20 +2,14 @@ import 'package:flutter/material.dart';
 
 import 'pages/home_page.dart';
 
-void main() {
-  runApp(MyApp());
-}
+void main() => runApp(TheWave());
 
-class MyApp extends StatelessWidget {
+class TheWave extends StatelessWidget {
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Mouse Parallax',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        fontFamily: 'Quicksand',
-      ),
-      home: HomePage(),
-    );
-  }
+  Widget build(BuildContext context) => MaterialApp(
+        title: 'XL: 🌊 The Wave',
+        color: Colors.black,
+        theme: ThemeData(fontFamily: 'Quicksand'),
+        home: const HomePage(),
+      );
 }

@@ -1,21 +1,4 @@
-## 1.0.0
- * Migrated to null safety.
- * Improved implementation.
-
-## 0.3.0
- * Restructured project
-
-## 0.2.3
- * Docs: Added header image
-
-## 0.2.2
- * Fixed dimensionalOffset assertion
-
-## 0.2.1+1
- * Docs: Minor fixes and improvements
-
-## 0.2.1
- * Fixed Web Compatibility
-
-## 0.2.0
- * First published version
+# XL
+## **[0.9.0]** - 13 MAY 21
+- Initial release, forked from [`mouse_parallax`](https://pub.dev/packages/mouse_parallax 'pub.dev package: mouse_parallax').
+  - Reimplements `ParallaxStack` with interoperability of new paradigm, but is not interchangeable with the original package.
