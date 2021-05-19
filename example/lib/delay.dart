@@ -1,3 +1,6 @@
+/// {@macro example_delay}
+library xl_demo;
+
 import 'package:flutter/material.dart';
 import 'package:xl/xl.dart';
 
@@ -16,6 +19,7 @@ class ExampleDelay extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Scaffold(
+        backgroundColor: Colors.brown.shade200,
         body: Column(
           children: [
             const Flexible(

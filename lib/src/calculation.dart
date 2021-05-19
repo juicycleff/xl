@@ -95,6 +95,12 @@ class RelativeParallaxFactorCalculator implements ParallaxFactorCalculator {
 
 /// An abstract class with static methods to handle sensor samples.
 abstract class SensorCompensation {
+  /// Normalize `x` and `y` values, considering provided compensation, to -1..1.
+  ///
+  /// AccelerometerEvent.x,y values range from -10..10.
+  static double normalize(double sample, double compensation) =>
+      2 * ((sample - compensation + 10) / 20) - 1;
+
   /// Consider a growing, passed `List<List<double>>` called buffer
   /// of previous `SensorEvent` samples and return a condensed `List<double>`
   /// that contais their averages.
@@ -112,24 +118,18 @@ abstract class SensorCompensation {
     return [avgX, avgY, avgZ];
   }
 
-  /// Normalize `x` and `y` values, considering provided compensation, to -1..1.
-  ///
-  /// AccelerometerEvent.x,y values range from -10..10.
-  static double normalize(double sample, double compensation) =>
-      2 * ((sample - compensation + 10) / 20) - 1;
-
-  /// Consider difference between the average [xy] in [buffer] and last [xy]
-  /// in [buffer] and return a "strength" between `0..1`
-  /// to apply to the sample compensation.
-  static double strength(List<List<double>> buffer, int xy) {
-    final strength = 1.0 -
-        (average(buffer)[xy] -
-                (buffer.isEmpty
-                        ? average(buffer)[xy]
-                        : buffer[buffer.length - 1][xy])
-                    .abs())
-            .clamp(0, 1);
-    // print(strength);
-    return strength;
-  }
+  // /// Consider difference between the average [xy] in [buffer] and last [xy]
+  // /// in [buffer] and return a "strength" between `0..1`
+  // /// to apply to the sample compensation.
+  // static double strength(List<List<double>> buffer, int xy) {
+  //   final strength = 1.0 -
+  //       (average(buffer)[xy] -
+  //               (buffer.isEmpty
+  //                       ? average(buffer)[xy]
+  //                       : buffer[buffer.length - 1][xy])
+  //                   .abs())
+  //           .clamp(0, 1);
+  //   // print(strength);
+  //   return strength;
+  // }
 }

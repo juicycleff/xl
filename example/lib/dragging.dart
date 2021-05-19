@@ -1,3 +1,6 @@
+/// {@macro example_dragging}
+library xl_demo;
+
 import 'package:flutter/material.dart';
 import 'package:xl/xl.dart';
 
@@ -58,6 +61,7 @@ class ExampleDragging extends StatelessWidget {
     ];
 
     return Scaffold(
+      backgroundColor: Colors.deepOrange.shade100,
       body: Column(
         children: [
           const Flexible(

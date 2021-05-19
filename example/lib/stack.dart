@@ -1,3 +1,6 @@
+/// {@macro example_stack}
+library xl_demo;
+
 import 'package:flutter/material.dart';
 import 'package:xl/xl.dart';
 
@@ -16,6 +19,7 @@ class ExampleStack extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Scaffold(
+        backgroundColor: Colors.purple.shade900,
         body: Stack(
           children: [
             const XL(

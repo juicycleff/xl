@@ -3,7 +3,6 @@ library xl;
 
 import 'package:flutter/material.dart';
 
-import 'models/layer.dart';
 import 'rendering.dart';
 
 /// {@template animated_xl}

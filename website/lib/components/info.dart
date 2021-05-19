@@ -90,15 +90,15 @@ class MoreInfoDialog extends StatelessWidget {
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       elevation: 5,
-                      padding: const EdgeInsets.symmetric(vertical: 3.0),
+                      padding: const EdgeInsets.all(3.0),
                       shape: const RoundedRectangleBorder(
                         borderRadius: BorderRadius.all(Radius.circular(20)),
                       ),
                     ),
                     child: const Text(
-                      'import "xl/xl.dart"',
+                      'import "package:xl/xl.dart"',
                       style: TextStyle(
-                        fontSize: 32,
+                        fontSize: 28,
                         fontWeight: FontWeight.bold,
                       ),
                     ),

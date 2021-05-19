@@ -31,15 +31,15 @@ class XL extends StatefulWidget {
   /// If this `XL` has both `XLayer`s *and* `PLayer`s, control the sharing of
   /// sensors or pointer data with the opposing `Layer` variety
   /// with the respective flags:
-  /// - `sharesPointer`
-  /// - `sharesSensors`
+  /// - `sharesPointer` provides pointer data to [XLayer]s
+  /// - `sharesSensors` provides sensors data to [PLayer]s
   ///
   /// ### Dragging
-  /// A parameter class that pertains to `PLayer`s and their parallax animation
-  /// during an active drag or pointer hover event.
+  /// A parameter class that primarily pertains to `PLayer`s and their
+  /// parallax animation during an active drag or pointer hover event.
   ///
   /// ### Normalization
-  /// A parameter class that pertains to `XLayer`s
+  /// A parameter class that primarily pertain to `XLayer`s
   /// for customizing the intake of `SensorEvent` data.
   /// - [Normalization.autocompensates], a flag for toggling autocompensation
   /// after steady sensor samples for some time
@@ -56,10 +56,10 @@ class XL extends StatefulWidget {
   /// When [PLayer]s are actively hovered/touched, [Dragging] applies instead.
   ///
   /// ### Void Callbacks
-  /// For function performance on state-change:
-  /// - onPointerEnter
-  /// - onPointerExit
-  /// - onCompensation
+  /// For `Function` performance on state-change:
+  /// - `onPointerEnter`
+  /// - `onPointerExit`
+  /// - `onCompensation`
   /// {@endtemplate}
   const XL({
     Key? key,
@@ -108,6 +108,7 @@ class XL extends StatefulWidget {
   ///
   /// Otherwise `XLayer`s in this `XL` are only affected by sensors data.
   ///
+  /// Default is `true`.
   /// Also see [sharesSensors].
   final bool sharesPointer;
 
@@ -117,38 +118,39 @@ class XL extends StatefulWidget {
   ///
   /// Otherwise `PLayer`s in this `XL` are only affected by pointer data.
   ///
+  /// Default is `false`.
   /// Also see [sharesPointer].
   final bool sharesSensors;
 
-  /// A parameter class that pertains to `PLayer`s and their parallax animation
-  /// during an active drag or pointer hover event.
-  /// - [Dragging.resets], a flag to toggle whether layers reset on pointer exit
-  /// - [Dragging.duration] of parallax animation under the pointer
-  /// - [Dragging.curve] of parallax animation under the pointer
+  /// A parameter class that primarily pertains to `PLayer`s and their
+  /// parallax animation during an active drag or pointer hover event.
+  /// - **[Dragging.resets]**, a flag to toggle whether layers reset on
+  ///   pointer exit
+  /// - **[Dragging.duration]** of parallax animation under the pointer
+  /// - **[Dragging.curve]** of parallax animation under the pointer
   final Dragging dragging;
 
-  /// A parameter class for customizing the intake of `SensorEvent` data.
-  /// - [Normalization.autocompensates], a flag for toggling autocompensation
-  /// after steady sensor samples for some time
-  /// - [Normalization.delay], how long to wait before kicking in
-  /// autocompensation, considering `sensitivity` to past samples in a buffer
-  /// - [Normalization.samplingRate], how frequently sensor data samples
-  /// are propagated
-  /// - [Normalization.sensitivity], a `double` clamped between `0..1`, that
-  /// influences the maximum `List` length for a sensors data samples buffer.
+  /// A parameter class that primarily pertain to `XLayer`s
+  /// for customizing the intake of `SensorEvent` data.
+  /// - **[Normalization.autocompensates]**, a flag for toggling
+  ///   autocompensation after steady sensor samples for `delay`
+  /// - **[Normalization.delay]**, how long to wait before kicking in
+  ///   autocompensation, considering `sensitivity` to past samples in a buffer
+  /// - **[Normalization.compensation]**, an amount to shear from raw
+  ///   `AccelerometerEvent` data
+  ///   (`x` or `y` axis, as gyroscope is used for `z` data)
+  /// - **[Normalization.scalar]**, an amount to multiply by
+  ///   the calculated sensor parallax factor
+  /// - **[Normalization.samplingRate]**, how frequently sensor data samples
+  ///   are propagated
+  /// - **[Normalization.sensitivity]**, a `double` clamped between `0..1`, that
+  ///   influences the maximum `List` length for a sensors data samples buffer.
   ///   - A larger `sensitivity` and thus *smaller* samples buffer means
-  ///   new, strong outlier accelerometer data stands out more easily from the
-  ///   average of the past samples in the buffer
-  /// - [Normalization.compensation], an amount to shear from raw
-  /// `AccelerometerEvent` data
-  /// (`x` or `y` axis, as gyroscope is used for `z` data)
-  /// - [Normalization.scalar], an amount to multiply by
-  /// the calculated sensor parallax factor
+  ///     new, strong outlier accelerometer data stands out more easily from the
+  ///     average of the past samples in the buffer
   ///
   /// There is a fine balance between `sensitivity` and `samplingRate`.
   /// It is recommended to keep them default and modify `delay` as necessary.
-  ///
-  /// This property is ignored by `PLayer`s.
   final Normalization normalization;
 
   /// The default `Duration` for this `XL`'s parallax animations.
@@ -156,7 +158,7 @@ class XL extends StatefulWidget {
   /// This applies when the [layers] are being transformed by sensor data
   /// or are resetting/autocompensating.
   ///
-  /// When [PLayer]s are actively hovered over/touched,
+  /// When [layers] are actively hovered over/touched,
   /// [Dragging.duration] applies instead.
   final Duration duration;
 
@@ -165,14 +167,14 @@ class XL extends StatefulWidget {
   /// This applies when the [layers] are being transformed by sensor data
   /// or are resetting/autocompensating.
   ///
-  /// When [PLayer]s are actively hovered over/touched,
-  /// [Dragging.duration] applies instead.
+  /// When [layers] are actively hovered over/touched,
+  /// [Dragging.curve] applies instead.
   final Curve curve;
 
-  /// Whether the parallax factors for `PLayer`s should be referenced
-  /// from the size and position of this [XL].
+  /// Whether the parallax factors derived from pointer data should be
+  /// referenced from the size and position of this [XL].
   ///
-  /// If `false` the parallax for `PLayer`s in this stack
+  /// If `false` the pointer-derived parallax for [layers] in this stack
   /// will be measured based on the width and height of the screen.
   /// Otherwise it will be measured based on the size of the [XL].
   ///
@@ -180,11 +182,11 @@ class XL extends StatefulWidget {
   /// This property does not affect sensors data.
   final bool useLocalPosition;
 
-  /// From where the parallax effect should be referenced for `PLayer`s.
-  /// This is a scale from `0..1`.
+  /// From where the parallax effect should be referenced
+  /// when derived from pointer data on a scale from `0..1`.
   ///
-  /// Its default value is `0.5, 0.5`, meaning that the
-  /// parallax effect is referenced from the center.
+  /// The default [ReferencePosition.center] is `ReferencePosition(0.5, 0.5)`,
+  /// meaning that the parallax effect is referenced from the center.
   /// This property does not affect sensors data.
   final ReferencePosition referencePosition;
 

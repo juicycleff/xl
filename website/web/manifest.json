@@ -6,7 +6,7 @@
     "background_color": "#000000",
     "theme_color": "#000000",
     "description": "A demonstration of the reimplementation of `ParallaxStack` with interoperability of new paradigm (though XL is not interchangeable with original mouse_parallax package).",
-    "orientation": "portrait-primary",
+    "orientation": "landscape-primary",
     "prefer_related_applications": false,
     "icons": [
         {

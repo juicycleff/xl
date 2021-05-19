@@ -1,8 +1,8 @@
 # XL
 
-| [![XL Package Logotype](https://raw.githubusercontent.com/Zabadam/xl/master/example/android/app/src/main/res/drawable/xl.png 'Get started by adding `xl:` to your pubspec and importing `package:xl/xl.dart`')](https://pub.dev/packages/xl) | [![XL Logotype "Spinning Top"](https://raw.githubusercontent.com/Zabadam/xl/master/doc/xl.gif 'See `ExampleXL()` demo')](https://github.com/Zabadam/xl/blob/master/example/lib/main.dart#L286) |
+| [![XL Package Logotype](https://raw.githubusercontent.com/Zabadam/xl/master/example/android/app/src/main/res/drawable/xl.png 'Get started by adding `xl:` to your pubspec and importing `package:xl/xl.dart`')](https://pub.dev/packages/xl) | [![XL Logotype "Spinning Top"](https://raw.githubusercontent.com/Zabadam/xl/master/doc/xl.gif 'See `Logotype()` demo')](https://github.com/Zabadam/xl/blob/master/example/lib/main.dart#L39) |
 | :-: | :-: |
-| [![Starfield](https://raw.githubusercontent.com/Zabadam/xl/master/doc/starfield.gif 'See `ExampleStarfield()` demo')](https://github.com/Zabadam/xl/blob/master/example/lib/main.dart#L181) | [![Warpspeed](https://raw.githubusercontent.com/Zabadam/xl/master/doc/warpspeed.gif 'See `ExampleStarfield()` demo')](https://github.com/Zabadam/xl/blob/master/example/lib/main.dart#L181) |
+| [![Starfield](https://raw.githubusercontent.com/Zabadam/xl/master/doc/starfield.gif 'See `ExampleStarfield()` demo')](https://github.com/Zabadam/xl/blob/master/example/lib/main.dart#L265) | [![Warpspeed](https://raw.githubusercontent.com/Zabadam/xl/master/doc/warpspeed.gif 'See `ExampleStarfield()` demo')](https://github.com/Zabadam/xl/blob/master/example/lib/main.dart#L265) |
 
 
 A package providing the `XL` stack widget to implement accelerometer- and  
@@ -11,6 +11,8 @@ children according to a spatial, three-dimensional layer definition.
 Touch and Gyroscope support included.
 
 Design simple or elaborate *`XL`*-erometer driven interactions and interfaces.
+
+&nbsp;
 
 ## Getting Started
 To get started with sensor data, use an `XL` with `XLayer`s:
@@ -33,11 +35,16 @@ const Widget xl = XL(
 );
  ```
 
-## Layers
-The `XL.layers` property takes a list of `XLayers`s or `PLayers`s.
+&nbsp;
 
-These `layers` allow you to define the animatable properties  
+## Layers
+The `XL.layers` property takes a list of `XLayer`s or `PLayer`s.
+
+These `layers` allow you to define the animatable properties 
 of their `child` widgets.
+
+> [![Delicious parallax by accelerometer 🤤](https://raw.githubusercontent.com/Zabadam/xl/master/doc/example_100.gif 'Delicious parallax by accelerometer 🤤')](https://github.com/Zabadam/xl/blob/master/example/lib/main.dart#L72)
+> is the result of the below `Example`:
 
  ```dart
 class Example extends StatelessWidget {
@@ -75,8 +82,7 @@ class Example extends StatelessWidget {
 }
  ```
 
-That example yields the following result:  
-[![Delicious parallax by accelerometer 🤤](https://raw.githubusercontent.com/Zabadam/xl/master/doc/example_100.gif 'Delicious parallax by accelerometer 🤤')](https://github.com/Zabadam/xl/blob/master/example/lib/main.dart#L35)
+&nbsp;
 
 ## Advanced Usage
 As stated, an `XL` may have both varieties of layer interspersed.  
@@ -130,24 +136,27 @@ final example = Column(children: [
 ]);
 ```
 
-That same stack of `layers` laid out with these two flags  
-in the four possible configurations would behave like this:  
-[![Flags to handle \`XLayers\` and \`PLayers\` separately](https://raw.githubusercontent.com/Zabadam/xl/master/doc/sharing_inputs_300.gif 'Flags to handle `X` and `P Layers` separately')](https://github.com/Zabadam/xl/blob/master/example/lib/main.dart#L77)
+> That same stack of `layers` laid out in a demonstration
+> with the two flags in their four possible configurations:
+>
+> [![Flags to handle \`XLayers\` and \`PLayers\` separately](https://raw.githubusercontent.com/Zabadam/xl/master/doc/sharing_inputs_300.gif 'Flags to handle `X` and `P Layers` separately')](https://github.com/Zabadam/xl/blob/master/example/lib/main.dart#159)
+> 
 > 🟥 Red layers are `PLayer`s and react primarily to pointers data.  
-> 🟦 Blue layers are `XLayer`s and react primarily to sensors data.  
-> ⬛ Black layers are `XLayer`s with *no animation properties*.
-> They make no reaction to any input.
->   
 > 👈 The left two 🟥 `PLayer`s also consider sensors data  
+> 
+> 🟦 Blue layers are `XLayer`s and react primarily to sensors data.  
 > 👆 The top two 🟦 `XLayer`s also consider pointer data
+> 
+> ⬛ Black layers are control `XLayer`s with *no animation properties*.
+> They make no reaction to any input.
 
 
 &nbsp;
 
-## Reference
+# Reference
 
-### Roadmap
-1. Provide richer access to sensors data and ability to manipulate `Layer`s in new ways
+## 🛣️ Roadmap
+1. 🔳 Provide richer access to sensors data and ability to manipulate `Layer`s in new ways
    - Such as an `AccelSpec` and `GyroSpec` that would enable *transformation
    of* any axis based on *input from* any axis, determined by parameter.
      - Currently, for example, `yRotation` is controlled by accelerometer X axis
@@ -158,17 +167,28 @@ in the four possible configurations would behave like this:
      which axis/sensor contributes to it. What deep options that could provide!
      Such as offsetting a `Widget` vertically *and* rotating it over Y axis
      based on only one input from accelerometer.
-2. Along with **#1** above, provide more Gyroscope functionality
+2. 🔳 Along with **#1** above, provide more Gyroscope functionality
 than only one axis of influence. 
    - Gyro is a little tricker, as the sensor mostly reads flat near-`0`
 values *unless the device is moving*.
    - This still provides cool options for developers to make neat interactions,
 and so should be expanded upon.
+3. ✅ ~~Offer an automatic `XL` stack that simply accepts a `List<Widget>`
+(not necessarily `XLayer`s) and dynamically generates progressively greater
+translation and rotation values for each layer.~~
+   - Check out `AutoXL` which makes a parallax stack even easier to implement. \
+   Simply provide any old widgets as `layers` and optionally tinker
+   with the `depthFactor` or max layer `depth`.
+   - Pre-configured: `AutoXL.pane`, `AutoXL.wiggler`, `AutoXL.deep`
 
-### Bugs
+&nbsp;
+
+## 🐞 Bugs
 1. Discrepancy with normalization delay and normalization duration.
 
-### History
+&nbsp;
+
+## 📜 History
 *For posterity and developer preference, there are three extension "wrappers" available.*
 - *Instead of the short, all-caps `XL`, consider a `ParallaxStack`*
 - *Instead of the double-cap `XLayer`, consider an `AcceleraxLayer`*
@@ -183,8 +203,10 @@ final xl = ParallaxStack( // XL
   ],
 );
 ```
-- Furthermore, the [original website demo](https://xl.zaba.app/ 'the_wave website demo from package:mouse_parallax, converted to package:xl')
-works well [with accelerometer data]((https://github.com/Zabadam/xl/blob/master/website/ 'the_wave website demo from package:mouse_parallax, converted to package:xl')).
+##### WORK IN PROGRESS
+- Furthermore, the [🌊 original website demo](https://xl.zaba.app/ 'the_wave website demo from package:mouse_parallax, converted to package:xl')
+works well [with accelerometer data](https://github.com/Zabadam/xl/blob/master/website/lib/ 'the_wave website demo from package:mouse_parallax, converted to package:xl').
+
 
 ##### **Forked from [`mouse_parallax`](https://pub.dev/packages/mouse_parallax 'pub.dev package: mouse_parallax') considering the required `AnimatedParallaxStack` widget is not exported with the original package and that accelerometers have nothing to do with mice.**
 - ##### [License here.](https://pub.dev/packages/mouse_parallax/license 'pub.dev package: mouse_parallax | license')

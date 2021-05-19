@@ -15,7 +15,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) => Scaffold(
         body: ParallaxStack(
           dragging: Dragging(duration: drag, curve: curve),
-          normalization: Normalization(scalar: [2.0, 2.0]),
+          // normalization: Normalization(scalar: [2.0, 2.0]),
           layers: const [
             BackgroundLayer(),
             Shade(color: Colors.black45),
