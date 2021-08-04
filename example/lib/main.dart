@@ -1,8 +1,11 @@
+import 'dart:async';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+
 import 'package:xl/xl.dart';
+import 'package:foil/foil.dart';
 
 // ignore: unused_import
 import 'delay.dart';
@@ -25,13 +28,13 @@ class Example extends StatelessWidget {
   Widget build(BuildContext context) =>
 
       /// Comment `ExampleXL` line and uncomment another demo line ([CTRL] + [/])
-      const MaterialApp(color: Colors.black, home: Logotype());
-  // const MaterialApp(color: Colors.white, home: Example0());
-  // const MaterialApp(color: Colors.white, home: ExampleDragging());
-  // const MaterialApp(color: Colors.white, home: ExampleStack());
-  // const MaterialApp(color: Colors.white, home: ExampleDelay());
-  // const MaterialApp(color: Colors.white, home: ExampleSharingInput());
-  // const MaterialApp(color: Colors.black, home: ExampleStarfield());
+      // const MaterialApp(color: Colors.black, home: Logotype());
+      // const MaterialApp(color: Colors.white, home: Example0());
+      // const MaterialApp(color: Colors.white, home: ExampleDragging());
+      // const MaterialApp(color: Colors.white, home: ExampleStack());
+      // const MaterialApp(color: Colors.white, home: ExampleDelay());
+      // const MaterialApp(color: Colors.white, home: ExampleSharingInput());
+      const MaterialApp(color: Colors.black, home: ExampleStarfield());
   // const MaterialApp(color: Colors.black, home: Automation());
 }
 
@@ -114,40 +117,52 @@ class Example0 extends StatelessWidget {
 /// {@macro automation}
 class Automation extends StatelessWidget {
   /// {@template automation}
+  /// Generation of `XL` widgets & also presets.
   /// {@endtemplate}
   const Automation({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    final cyans = List.generate(4, (i) => Colors.cyan[((1 + 2 * i) * 100)]);
+    final purples = List.generate(4, (i) => Colors.purple[((1 + 2 * i) * 100)]);
+    final pinks = List.generate(4, (i) => Colors.pink[((1 + 2 * i) * 100)]);
+
+    List<Widget> buildLayers(int i) => [
+          Container(
+            width: 200.0,
+            height: 200.0,
+            color: purples[i],
+          ),
+          Container(
+            width: 200.0,
+            height: 200.0,
+            color: pinks[i],
+          ),
+        ];
+
+    final autoXLs = [
+      AutoXL.pane(layers: buildLayers(0)),
+      AutoXL.wiggler(layers: buildLayers(1)),
+      AutoXL.deep(layers: buildLayers(2)),
+      AutoXL(
+        depthFactor: 100, // only accepted by default `AutoXL()`
+        layers: buildLayers(3),
+      ),
+    ];
+
     return MaterialApp(
       home: Scaffold(
         backgroundColor: Colors.amber.shade100,
         body: Center(
-          child: Container(
-            width: 400,
-            height: 400,
-            color: Colors.cyan.shade200,
-            child: AutoXL.pane(
-              // child: AutoXL.wiggler(
-              // child: AutoXL.deep(
-              // child: AutoXL(
-              // depthFactor: 100, // only accepted by default `AutoXL()`
-              layers: [
-                Center(
-                  child: Container(
-                    width: 250,
-                    height: 250,
-                    color: Colors.purple.shade300,
-                  ),
+          child: Wrap(
+            children: [
+              for (var i = 0; i <= 3; i++)
+                Container(
+                  width: 200.0,
+                  height: 200.0,
+                  color: cyans[i],
+                  child: Center(child: autoXLs[i]),
                 ),
-                Center(
-                  child: Container(
-                    width: 175,
-                    height: 175,
-                    color: Colors.pink.shade300,
-                  ),
-                ),
-              ],
-            ),
+            ],
           ),
         ),
       ),
@@ -284,8 +299,9 @@ class _ExampleStarfieldState extends State<ExampleStarfield> {
   Widget build(BuildContext context) {
     const _duration = Duration(milliseconds: 250);
     const _ms = Duration(milliseconds: 1);
-
+    final random = Random();
     final _starfield = <XL>[];
+
     final _colors = List.from(Colors.primaries)..shuffle();
     final _alignments = [
       Alignment.bottomCenter,
@@ -297,11 +313,30 @@ class _ExampleStarfieldState extends State<ExampleStarfield> {
       Alignment.topCenter,
       Alignment.topLeft,
       Alignment.topRight,
+      Alignment(random.nextBool() ? 1 : -1 * random.nextDouble() * 6.0,
+          random.nextBool() ? 1 : -1 * random.nextDouble() * 6.0),
+      Alignment(random.nextBool() ? 1 : -1 * random.nextDouble() * 6.0,
+          random.nextBool() ? 1 : -1 * random.nextDouble() * 6.0),
+      Alignment(random.nextBool() ? 1 : -1 * random.nextDouble() * 6.0,
+          random.nextBool() ? 1 : -1 * random.nextDouble() * 6.0),
+    ]..shuffle();
+    final _gradients = [
+      Foils.gymClassParachute,
+      Foils.linearLooping,
+      Foils.linearLoopingReversed,
+      Foils.linearRainbow,
+      Foils.linearReversed,
+      Foils.oilslick,
+      Foils.rainbow,
+      Foils.sitAndSpin,
+      Foils.stepBowLinear,
+      Foils.stepBowRadial,
+      Foils.stepBowSweep
     ]..shuffle();
 
-    for (var xl = 0; xl < 5; xl++) {
-      final duration = _duration + _ms * Random().nextInt(2500);
-      final d = Random().nextDouble();
+    for (var xl = 0; xl < 20; xl++) {
+      final duration = _duration + _ms * random.nextInt(2500);
+      final d = random.nextDouble();
 
       _starfield.add(
         XL(
@@ -314,7 +349,7 @@ class _ExampleStarfieldState extends State<ExampleStarfield> {
           normalization:
               const Normalization(delay: Duration(milliseconds: 2500)),
           layers: [
-            for (var layer = 0; layer < 100; layer++)
+            for (var layer = 0; layer < 25; layer++)
               XLayer(
                 dimensionalOffset: 0.05,
                 xRotation: 0.5,
@@ -322,16 +357,23 @@ class _ExampleStarfieldState extends State<ExampleStarfield> {
                 zRotationByX: 20,
                 xOffset: 0,
                 yOffset: 0,
-                child: Align(
+                child: AnimatedAlign(
                   alignment: (_alignments..shuffle())[0] +
-                      Alignment(Random().nextDouble(), Random().nextDouble()) -
-                      Alignment(Random().nextDouble(), Random().nextDouble()),
-                  child: Container(
-                    width: 1 + d,
-                    height: 1 + d,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: (_colors..shuffle())[0],
+                      Alignment(random.nextDouble(), random.nextDouble()) -
+                      Alignment(random.nextDouble(), random.nextDouble()),
+                  duration: duration,
+                  child: Foil.sheet(
+                    opacity: 0.5,
+                    duration: duration,
+                    speed: const Duration(milliseconds: 250),
+                    gradient: (_gradients..shuffle())[0],
+                    sheet: Sheet(
+                      width: (xl + 1) * d + layer / 25 - layer / 25 * d,
+                      height: (xl + 1) * d + layer / 25 - layer / 25 * d,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: (_colors..shuffle())[0],
+                      ),
                     ),
                   ),
                 ),
@@ -360,7 +402,10 @@ class _ExampleStarfieldState extends State<ExampleStarfield> {
         boundaryMargin: const EdgeInsets.all(double.infinity),
         minScale: 0.01,
         maxScale: 12.5,
-        child: Stack(children: [for (final xl in _starfield) xl]),
+        child: Roll(
+          crinkle: Crinkle.twinkling,
+          child: Stack(children: [for (final xl in _starfield) xl]),
+        ),
       ),
     );
   }

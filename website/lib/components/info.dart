@@ -41,12 +41,12 @@ class MoreInfo extends StatelessWidget {
                   color: Colors.white,
                   shape: BoxShape.circle,
                 ),
-                child: const Icon(Icons.add_box_outlined, size: 40),
+                child: const Icon(Icons.add_box, size: 40),
               ),
               onTap: () {
                 showDialog(
                   context: context,
-                  builder: (context) => MoreInfoDialog(),
+                  builder: (context) => const MoreInfoDialog(),
                 );
               },
             ),
