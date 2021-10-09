@@ -1,4 +1,9 @@
-# XL
+# 🕹️ xl
+## [pub.dev Listing](https://pub.dev/packages/xl) | [API Doc](https://pub.dev/documentation/xl/latest) | [GitHub](https://github.com/Zabadam/xl)
+#### API References: [`XL`](https://pub.dev/documentation/xl/latest/xl/XL-class.html)
+##### [🐸 Zaba.app ― simple packages, simple names.](#-zabaapp--simple-packages-simple-nameshttpspubdevpublisherszabaapppackages-other-flutter-packages-published-by-zabaapp)
+
+---
 
 | [![XL Package Logotype](https://raw.githubusercontent.com/Zabadam/xl/master/example/android/app/src/main/res/drawable/xl.png 'Get started by adding `xl:` to your pubspec and importing `package:xl/xl.dart`')](https://pub.dev/packages/xl) | [![XL Logotype "Spinning Top"](https://raw.githubusercontent.com/Zabadam/xl/master/doc/xl.gif 'See `Logotype()` demo')](https://github.com/Zabadam/xl/blob/master/example/lib/main.dart#L39) |
 | :-: | :-: |
@@ -203,6 +208,7 @@ final xl = ParallaxStack( // XL
   ],
 );
 ```
+
 ##### WORK IN PROGRESS
 - Furthermore, the [🌊 original website demo](https://xl.zaba.app/ 'the_wave website demo from package:mouse_parallax, converted to package:xl')
 works well [with accelerometer data](https://github.com/Zabadam/xl/blob/master/website/lib/ 'the_wave website demo from package:mouse_parallax, converted to package:xl').
@@ -210,3 +216,33 @@ works well [with accelerometer data](https://github.com/Zabadam/xl/blob/master/w
 
 ##### **Forked from [`mouse_parallax`](https://pub.dev/packages/mouse_parallax 'pub.dev package: mouse_parallax') considering the required `AnimatedParallaxStack` widget is not exported with the original package and that accelerometers have nothing to do with mice.**
 - ##### [License here.](https://pub.dev/packages/mouse_parallax/license 'pub.dev package: mouse_parallax | license')
+
+| ![transparent 600x1 pixel-pusher (ignore)](https://i.imgur.com/XCh0q2K.png) | [📚](#-table-of-contents 'Table of Contents') |
+| --------------------------------------------------------------------------: | -------------------------------------------: |
+
+<br />
+
+## 🐸 [Zaba.app ― simple packages, simple names.](https://pub.dev/publishers/zaba.app/packages 'Other Flutter packages published by Zaba.app')
+
+<details>
+<summary>More by Zaba</summary>
+
+### Wrappers | Widgets that surround other widgets with functionality
+- ## 🕹️ [xl](https://pub.dev/packages/xl 'implement accelerometer-fueled interactions with a layering paradigm')
+- ## 🌈 [foil](https://pub.dev/packages/foil 'implement accelerometer-reactive gradients in a cinch')
+- ## 📜 [curtains](https://pub.dev/packages/curtains 'provide animated shadow decorations for a scrollable to allude to unrevealed content')
+
+---
+### Container Widget | Wraps many functionalities in one, very customizable
+- ## 🌟 [surface](https://pub.dev/packages/surface 'animated, morphing container with specs for Shape, Appearance, Filter, Tactility')
+
+---
+### Succinct Utility | Work great alone or employed above
+- ## 🆕 [![neu header](https://neu.zaba.app/img/neu_20.png)](https://pub.dev/packages/neu 'A helper for generating outstanding neumorphic-conforming designs')
+- ## 🙋‍♂️ [img](https://pub.dev/packages/img 'An extended Image \"Too\" and DecorationImageToo that support an expanded Repeat.mirror painting mode')
+- ## 🙋‍♂️ [icon](https://pub.dev/packages/icon 'An extended Icon \"Too\" for those that are not actually square, plus shadows support + IconUtils')
+- ## 🏓 [ball](https://pub.dev/packages/ball 'A bouncy, position-mirroring splash factory that\'s totally customizable')
+- ## 👁‍🗨 [sense](https://pub.dev/packages/sense 'A widget that outputs actionable sensors data with intervals, delays, normalization, and more.')
+- ## 👥 [shadows](https://pub.dev/packages/shadows 'Convert a double-based \`elevation\` + BoxShadow and List\<BoxShadow\> extensions')
+- ## 🎨 [![spectrum header](https://raw.githubusercontent.com/Zabadam/spectrum/main/doc/img/spectrum_15.gif)](https://pub.dev/packages/spectrum 'Color and Gradient utilities such as GradientTween, copyWith, complementary for colors, AnimatedGradient, MaterialColor generation, and more')
+</details>

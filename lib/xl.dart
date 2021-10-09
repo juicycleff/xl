@@ -1,3 +1,10 @@
+/// # 🕹️ xl
+/// [pub.dev Listing](https://pub.dev/packages/xl) |
+/// [API Doc](https://pub.dev/documentation/xl/latest) |
+/// [GitHub](https://github.com/Zabadam/xl)
+///
+/// **API References: [`XL`](https://pub.dev/documentation/xl/latest/xl/XL-class.html)**
+///
 /// A package that provides the `XL` widget to implement accelerometer and/or
 /// pointer and touch fueled parallax animations that smoothly transform
 /// their children according to a spatial, three-dimensional

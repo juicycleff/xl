@@ -1,4 +1,4 @@
-# XL
+# 🕹️ xl
 ## **[0.9.1]** - 18 MAY 21
 - Provide `AutoXL` to more easily generate a layered parallax stack with less setup.
 
