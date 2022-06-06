@@ -4,7 +4,6 @@
 library xl;
 
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 
 import '../animation.dart';
 import '../calculation.dart';
@@ -309,7 +308,6 @@ class _XLState extends State<XL> {
           });
         },
         child: AnimatedXL(
-          children: widget.layers,
           xFactor: pointerX,
           yFactor: pointerY,
           sensorFactorX: isPortrait ? sensorX : sensorY,
@@ -321,6 +319,7 @@ class _XLState extends State<XL> {
                   ? widget.duration * 2 // FIXME
                   : widget.duration,
           curve: hovering ? widget.dragging.curve : widget.curve,
+          children: widget.layers,
         ),
       ),
     );

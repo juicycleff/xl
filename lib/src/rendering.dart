@@ -47,13 +47,14 @@ class XLParentData extends ContainerBoxParentData<RenderBox> {
 class StaticXL extends MultiChildRenderObjectWidget {
   /// {@macro static_xl}
   StaticXL({
+    Key? key,
     required List<Widget> children,
     required this.xFactor,
     required this.yFactor,
     required this.sensorFactorX,
     required this.sensorFactorY,
     required this.sensorFactorZ,
-  }) : super(children: children);
+  }) : super(key: key, children: children);
 
   /// {@macro pointer_factor}
   final double xFactor;
@@ -197,8 +198,9 @@ class RenderXL extends RenderBox
             (childParentData.useSensors ?? false ? _sensorFactorY : _yFactor),
         0.0,
       );
-      if (childParentData.enable3d ?? false)
+      if (childParentData.enable3d ?? false) {
         transform.setEntry(3, 2, childParentData.dimensionalOffset ?? 0.001);
+      }
       final xRotation = childParentData.xRotation ?? 0.0;
       final yRotation = childParentData.yRotation ?? 0.0;
       final zRotationX = childParentData.zRotationByX ?? 0.0;

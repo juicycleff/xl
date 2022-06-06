@@ -10,7 +10,7 @@ import 'rendering.dart';
 /// {@endtemplate}
 class AnimatedXL extends ImplicitlyAnimatedWidget {
   /// {@macro animated_xl}
-  AnimatedXL({
+  const AnimatedXL({
     Key? key,
     this.xFactor = 0,
     this.yFactor = 0,
@@ -79,11 +79,11 @@ class _AnimatedXLState extends AnimatedWidgetBaseState<AnimatedXL> {
 
   @override
   Widget build(BuildContext context) => StaticXL(
-        children: widget.children,
         xFactor: _xFactor?.evaluate(animation) ?? 0.0,
         yFactor: _yFactor?.evaluate(animation) ?? 0.0,
         sensorFactorX: _sensorFactorX?.evaluate(animation) ?? 0.0,
         sensorFactorY: _sensorFactorY?.evaluate(animation) ?? 0.0,
         sensorFactorZ: _sensorFactorZ?.evaluate(animation) ?? 0.0,
+        children: widget.children,
       );
 }
