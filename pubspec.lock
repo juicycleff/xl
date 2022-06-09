@@ -117,9 +117,11 @@ packages:
   sensors_plus:
     dependency: "direct main"
     description:
-      name: sensors_plus
-      url: "https://pub.dartlang.org"
-    source: hosted
+      path: "packages/sensors_plus/sensors_plus"
+      ref: c6ddf49f6c2a3ea553c86033ef5427893dc07707
+      resolved-ref: c6ddf49f6c2a3ea553c86033ef5427893dc07707
+      url: "https://github.com/Rexios80/plus_plugins"
+    source: git
     version: "1.3.2"
   sensors_plus_platform_interface:
     dependency: transitive
